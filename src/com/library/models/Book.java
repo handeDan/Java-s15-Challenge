@@ -6,7 +6,7 @@ import java.util.Date;
 public class Book {
     //instance variables:
     private Long bookId;
-    private String name;
+    private String title;
     private double price;
     private String status;
     private String edition;
@@ -15,9 +15,9 @@ public class Book {
     private Author author;
 
     //constructor:
-    public Book(Long bookId, String name, double price, String status, String edition, Date dateOfPurchase, Author author) {
+    public Book(Long bookId, String title, double price, String status, String edition, Date dateOfPurchase, Author author) {
         this.setBookId(bookId);
-        this.setName(name);
+        this.setTitle(title);
         this.setPrice(price);
         this.setStatus(status);
         this.setEdition(edition);
@@ -34,12 +34,12 @@ public class Book {
         this.bookId = bookId;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public double getPrice() {
@@ -82,11 +82,22 @@ public class Book {
         this.author = author;
     }
 
+    //display book description:
+    public void display() {
+        System.out.println("Kitap ID: " + bookId);
+        System.out.println("Başlık: " + title);
+        System.out.println("Yazar: " + author);
+        System.out.println("Fiyat: " + price);
+        System.out.println("Durum: " + status);
+        System.out.println("Baskı: " + edition);
+        System.out.println("Satın Alınma Tarihi: " + dateOfPurchase);
+    }
+
     @Override
     public String toString() {
         return "Book{" +
                 "bookId=" + bookId +
-                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
                 ", price=" + price +
                 ", status='" + status + '\'' +
                 ", edition='" + edition + '\'' +

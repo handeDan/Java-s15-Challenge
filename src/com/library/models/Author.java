@@ -26,6 +26,6 @@ public class Author extends Person{
     //overrided abstract method:
     @Override
     public void whoYouAre() {
-        System.out.println("The author of the book is : " + this.getName());
+        System.out.println("Kitabın yazarı : " + this.getName());
     }
 }

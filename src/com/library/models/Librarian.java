@@ -3,16 +3,18 @@ package com.library.models;
 public class Librarian extends Person{
     //instance varibles:
     private String password;
+    private Library library;
 
     //constructor:
-    public Librarian(String name) {
+    public Librarian(String name, String password, Library library) {
         super(name);
+        this.password = password;
+        this.library = library;
     }
 
     //methods:
-    public String searchBook(Book book) {
-        return book.toString();
-    }
+    //public String searchBook(String title) {
+    //}
 
     public void verifyMember() {
 
@@ -37,6 +39,6 @@ public class Librarian extends Person{
     //overrided abstract method:
     @Override
     public void whoYouAre() {
-        System.out.println("The librarian is : " + this.getName());
+        System.out.println("Kütüphaneci : " + this.getName());
     }
 }

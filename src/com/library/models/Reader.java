@@ -8,7 +8,7 @@ public class Reader extends Person{
     private Set<Book> borrowedBooks; //set: keep only unique data!
 
     //constructor:
-    public Reader(String name, Set<Book> borrowedBooks) {
+    public Reader(String name) {
         super(name);
         this.borrowedBooks = new HashSet<>(); //created an empty HashSet
         //HashSet: keep only unique data!
@@ -32,9 +32,13 @@ public class Reader extends Person{
         borrowedBooks.remove(book);
     }
 
+    public Set<Book> showBook() {
+        return borrowedBooks;
+    }
+
     //overrided abstract method:
     @Override
     public void whoYouAre() {
-        System.out.println("The reader of the book is : " + this.getName());
+        System.out.println("Kayıtlı kullanıcı : " + this.getName());
     }
 }

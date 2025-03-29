@@ -5,35 +5,64 @@ import java.util.Set;
 
 public class Reader extends Person{
     //instance variables:
-    private Set<Book> borrowedBooks; //set: keep only unique data!
+    private String id;
+    private String name;
+    private int noBooksIssued; // Ödünç alınan kitap sayısı
 
     //constructor:
-    public Reader(String name) {
+    public Reader(String name, String id, String name1, int noBooksIssued) {
         super(name);
-        this.borrowedBooks = new HashSet<>(); //created an empty HashSet
-        //HashSet: keep only unique data!
+        this.id = id;
+        this.name = name1;
+        this.noBooksIssued = noBooksIssued;
     }
 
     //getter and setter methods:
-    public Set<Book> getBorrowedBooks() {
-        return borrowedBooks;
+    public String getId() {
+        return id;
     }
 
-    public void setBorrowedBooks(Set<Book> borrowedBooks) {
-        this.borrowedBooks = borrowedBooks;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    @Override
+    public String getName() {
+        return name;
+    }
+
+    @Override
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getNoBooksIssued() {
+        return noBooksIssued;
+    }
+
+    public void setNoBooksIssued(int noBooksIssued) {
+        this.noBooksIssued = noBooksIssued;
     }
 
     //methods:
+    //borrowing a book:
     public void borrowBook(Book book) {
-        borrowedBooks.add(book);
+        if (noBooksIssued < 5) {
+            noBooksIssued++;
+            System.out.println(name + " kitap ödünç aldı: " + book.getTitle());
+        } else {
+            System.out.println(name + " ödünç alabileceği kitap limitine ulaştı.");
+        }
     }
 
+    //returning a book:
     public void returnBook(Book book) {
-        borrowedBooks.remove(book);
-    }
-
-    public Set<Book> showBook() {
-        return borrowedBooks;
+        if (noBooksIssued > 0) {
+            noBooksIssued--;
+            System.out.println(name + " kitap iade etti: " + book.getTitle());
+        } else {
+            System.out.println(name + " iade edilecek kitap bulunmuyor.");
+        }
     }
 
     //overrided abstract method:

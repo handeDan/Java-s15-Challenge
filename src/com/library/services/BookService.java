@@ -25,6 +25,7 @@ public class BookService {
         Reader reader = readerRepository.getReaderById(readerId);
         Book book = findBookById(bookId);
 
+        System.out.println(bookId);
         //controlling before borrowing a book:
         if (reader == null) {
             System.out.println("Okuyucu bulunamadı.");
@@ -85,6 +86,9 @@ public class BookService {
 
     //finding a book by its id:
     private Book findBookById(String bookId) {
+        //System.out.println(bookRepository.getAllBooks().size());
+        //System.out.println(bookId);
+        //System.out.println( bookRepository.getAllBooks().get(0).getBookId());
         for (Book book : bookRepository.getAllBooks()) {
             if (book.getBookId().equals(bookId)) {
                 return book;

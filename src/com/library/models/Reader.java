@@ -10,10 +10,10 @@ public class Reader extends Person{
     private int noBooksIssued; // Ödünç alınan kitap sayısı
 
     //constructor:
-    public Reader(String name, String id, String name1, int noBooksIssued) {
+    public Reader(String name, String id,  int noBooksIssued) {
         super(name);
         this.id = id;
-        this.name = name1;
+        this.name = name;
         this.noBooksIssued = noBooksIssued;
     }
 

@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Book {
     //instance variables:
-    private Long bookId;
+    private String bookId;
     private String title;
     private double price;
     private String status;
@@ -15,7 +15,7 @@ public class Book {
     private Author author;
 
     //constructor:
-    public Book(Long bookId, String title, double price, String status, String edition, Date dateOfPurchase, Author author) {
+    public Book(String bookId, String title, double price, String status, String edition, Date dateOfPurchase, Author author) {
         this.setBookId(bookId);
         this.setTitle(title);
         this.setPrice(price);
@@ -26,11 +26,11 @@ public class Book {
     }
 
     //getter and setter methods:
-    public Long getBookId() {
+    public String getBookId() {
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(String bookId) {
         this.bookId = bookId;
     }
 

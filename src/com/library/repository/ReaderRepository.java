@@ -41,6 +41,9 @@ public class ReaderRepository {
 
     //get a reader by id:
     public Reader getReaderById(String readerId) {
+        //System.out.println(readers.size());
+        //System.out.println(readerId);
+        //System.out.println(readers.get(0).getId());
         for (Reader reader : readers) {
             if (reader.getId().equals(readerId)) {
                 return reader;

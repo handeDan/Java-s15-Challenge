@@ -2,14 +2,14 @@ package com.library.models;
 
 public class Bill {
     //instance variables:
-    private Long billId;
+    private String billId;
     private Reader reader;
     private Book book;
     private double price;
     private boolean isPaid; //ödeme durumu
 
     //constructor:
-    public Bill(Long billId, Reader reader, Book book, double price) {
+    public Bill(String billId, Reader reader, Book book, double price) {
         this.billId = billId;
         this.reader = reader;
         this.book = book;
@@ -18,11 +18,11 @@ public class Bill {
 
     //getter and setter methods:
 
-    public Long getBillId() {
+    public String getBillId() {
         return billId;
     }
 
-    public void setBillId(Long billId) {
+    public void setBillId(String billId) {
         this.billId = billId;
     }
 

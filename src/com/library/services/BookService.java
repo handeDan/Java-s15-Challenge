@@ -1,8 +1,8 @@
 package com.library.services;
 
-import com.library.models.Bill;
 import com.library.models.Book;
 import com.library.models.Reader;
+import com.library.models.Bill;
 import com.library.repository.BookRepository;
 import com.library.repository.ReaderRepository;
 
@@ -25,38 +25,62 @@ public class BookService {
         Reader reader = readerRepository.getReaderById(readerId);
         Book book = findBookById(bookId);
 
-        if (reader != null && book != null && book.getStatus().equals("available")) {
-            // book is borrowed..
-            reader.borrowBook(book);
-            book.setStatus("borrowed");
+        //controlling before borrowing a book:
+        if (reader == null) {
+            System.out.println("Okuyucu bulunamadı.");
+            return;
+        }
+        if (book == null) {
+            System.out.println("Kitap bulunamadı.");
+            return;
+        }
+        if (book.getStatus().equals("borrowed")) {
+            System.out.println("Kitap zaten ödünç alınmış.");
+            return;
+        }
+        if (reader.getNoBooksIssued() >= 5) {
+            System.out.println("Okuyucu kitap limitine ulaşmış.");
+            return;
+        }
+
+        //borrowed a book:
+        reader.borrowBook(book);
+        book.setStatus("borrowed");
 
             // issued the bill..
             double amount = book.getPrice();
             String billId = Integer.toString(new Random().nextInt()); //rastgele bir integer üretir ve string'e çevirir.
             Bill bill = new Bill(billId, reader, book, amount);
             bill.displayBill();
-            System.out.println("Fatura kesildi.");
-        } else {
-            System.out.println("Kitap ödünç alınamadı.");
-        }
+            System.out.println("Kitap ödünç alındı ve fatura kesildi.");
     }
 
+
     //returning a book:
-    public void returnBook(String bookId, String readerId) {
+    public void returnBook(String readerId, String bookId) {
         Reader reader = readerRepository.getReaderById(readerId);
         Book book = findBookById(bookId);
 
-        if (reader != null && book != null && book.getStatus().equals("borrowed")) {
-            // Kitap iade ediliyor
-            reader.returnBook(book);
-            book.setStatus("available");
-
-            // Fatura ödeme işlemi
-            // İade edilen kitapla ilgili faturayı ödemek için
-            // burada ödeme işlemi yapılabilir
-        } else {
-            System.out.println("Kitap iade edilemedi.");
+        //controlling before returning a book:
+        if (reader == null) {
+            System.out.println("Okuyucu bulunamadı.");
+            return;
         }
+        if (book == null) {
+            System.out.println("Kitap bulunamadı.");
+            return;
+        }
+        if (book.getStatus().equals("available")) {
+            System.out.println("Kitap zaten iade edilmiş.");
+            return;
+        }
+
+        //returning a book:
+        reader.returnBook(book);
+        book.setStatus("available");
+
+        //billing after returning a book:
+        System.out.println("Kitap iade edildi.");
     }
 
     //finding a book by its id:

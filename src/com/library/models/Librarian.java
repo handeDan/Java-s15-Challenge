@@ -13,28 +13,7 @@ public class Librarian extends Person{
     }
 
     //methods:
-    //public String searchBook(String title) {
-    //}
 
-    public void verifyMember() {
-
-    }
-
-    public void issueBook(Book book) {
-
-    }
-
-    public void calculateBill() {
-
-    }
-
-    public void createBill() {
-
-    }
-
-    public void returnBook(Book book) {
-
-    }
 
     //overrided abstract method:
     @Override

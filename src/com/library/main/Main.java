@@ -54,6 +54,9 @@ public class Main {
 
         bookService.returnBook("12345","3"); //Hande "Gogol" kitabını geri verdi.
 
+        readerService.printAllBooks();
+        readerService.borrowBook("12345","1");
+        readerService.returnBook("12345","2");
 
 
     }

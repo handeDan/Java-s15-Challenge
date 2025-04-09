@@ -8,7 +8,7 @@ public class Book {
     private String bookId;
     private String title;
     private double price;
-    private String status;
+    private boolean status;
     private String edition;
     private LocalDate dateOfPurchase;
 
@@ -50,11 +50,11 @@ public class Book {
         this.price = price;
     }
 
-    public String getStatus() {
+    public boolean getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(boolean status) {
         this.status = status;
     }
 

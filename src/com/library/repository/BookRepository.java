@@ -4,6 +4,7 @@ import com.library.models.Book;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class BookRepository {
     private List<Book> books = new ArrayList<>();
@@ -36,4 +37,12 @@ public class BookRepository {
         return books;
     }
 
+    public Book getBookById(String bookId) {
+        for (Book book : books) {
+            if (book.getBookId().equals(bookId)) {
+                return book;
+            }
+        }
+        return null;
+    }
 }

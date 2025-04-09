@@ -58,4 +58,7 @@ public class ReaderService {
         }
         return null;
     }
+
+    public void printAllBooks() {
+    }
 }

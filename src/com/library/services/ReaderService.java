@@ -25,7 +25,7 @@ public class ReaderService {
         if (reader != null && book != null) {
             if (reader.getNoBooksIssued() < 5) {
                 reader.borrowBook(book);
-                book.setStatus("borrowed");
+                book.setStatus(true);
                 System.out.println(reader.getName() + " kitap ödünç aldı: " + book.getTitle());
             } else {
                 System.out.println(reader.getName() + " kitap limitine ulaşmış.");
@@ -40,9 +40,9 @@ public class ReaderService {
         Reader reader = readerRepository.getReaderById(readerId);
         Book book = findBookById(bookId);
 
-        if (reader != null && book != null && book.getStatus().equals("borrowed")) {
+        if (reader != null && book != null && book.getStatus()) {
             reader.returnBook(book);
-            book.setStatus("available");
+            book.setStatus(false);
             System.out.println(reader.getName() + " kitap iade etti: " + book.getTitle());
         } else {
             System.out.println("Kitap iade edilemedi.");
@@ -60,5 +60,8 @@ public class ReaderService {
     }
 
     public void printAllBooks() {
+        for (Book book : bookRepository.getAllBooks()) {
+            System.out.println(book);
+        }
     }
 }

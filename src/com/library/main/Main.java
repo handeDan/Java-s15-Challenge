@@ -1,13 +1,14 @@
 package com.library.main;
 
-import com.library.models.Book;
-import com.library.models.Reader;
+import com.library.models.*;
 import com.library.repository.BookRepository;
 import com.library.repository.ReaderRepository;
 import com.library.services.BookService;
+import com.library.services.LibrarianService;
 import com.library.services.ReaderService;
 
 public class Main {
+
     public static void main(String[] args) {
         // package yapısı:
         // com.library
@@ -36,28 +37,30 @@ public class Main {
         readerRepository.addReader(nil);
 
         //creating books:
-        Book dostoyevski = new Book("1", "Dostoyevski", 120.0, "available", "1", null, null);
+        Book dostoyevski = new StudyBooks("1", "Dostoyevski", 200.0, true, "1", null, null);
         bookRepository.addBook(dostoyevski);
 
-        Book tolstoy = new Book("2", "Tolstoy", 150.0, "available", "2", null, null);
+        Book tolstoy = new Magazines("2", "Tolstoy", 150.0, true, "2", null, null);
         bookRepository.addBook(tolstoy);
 
-        Book gogol = new Book("3", "Gogol", 100.0, "available", "3", null, null);
+        Book gogol = new Journals("3", "Gogol", 100.0, true, "3", null, null);
         bookRepository.addBook(gogol);
 
+
         //business logic:
-        bookService.borrowBook("1","12345"); //Hande "Dostoyevski" kitabını ödünç aldı.
-        bookService.borrowBook("2","12345"); //Hande "Tolstoy" kitabını ödünç aldı.
-        bookService.borrowBook("3","12345"); //Hande "Gogol" kitabını ödünç aldı.
+        readerService.borrowBook("12345","1"); //Hande "Dostoyevski" kitabını ödünç aldı.
+        readerService.borrowBook("12345","2"); //Hande "Tolstoy" kitabını ödünç aldı.
+        readerService.borrowBook("12345","3"); //Hande "Gogol" kitabını ödünç aldı.
 
-        bookService.borrowBook("3","54321"); //Hakan "Gogol" kitabını ödünç aldı.
+        readerService.borrowBook("54321","3"); //Hakan "Gogol" kitabını ödünç aldı.
 
-        bookService.returnBook("12345","3"); //Hande "Gogol" kitabını geri verdi.
+        readerService.returnBook("12345","3"); //Hande "Gogol" kitabını geri verdi.
 
         readerService.printAllBooks();
         readerService.borrowBook("12345","1");
         readerService.returnBook("12345","2");
 
-
+        LibrarianService librarianService = new LibrarianService(bookRepository);
+        System.out.println("Faturanız: " + librarianService.calculateBill(5));
     }
 }

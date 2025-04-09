@@ -3,7 +3,7 @@ package com.library.models;
 import java.time.LocalDate;
 import java.util.Date;
 
-public class Book {
+public abstract class Book {
     //instance variables:
     private String bookId;
     private String title;
@@ -15,7 +15,7 @@ public class Book {
     private Author author;
 
     //constructor:
-    public Book(String bookId, String title, double price, String status, String edition, Date dateOfPurchase, Author author) {
+    public Book(String bookId, String title, double price, boolean status, String edition, Date dateOfPurchase, Author author) {
         this.setBookId(bookId);
         this.setTitle(title);
         this.setPrice(price);

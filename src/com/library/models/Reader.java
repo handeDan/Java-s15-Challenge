@@ -45,24 +45,12 @@ public class Reader extends Person{
     }
 
     //methods:
-    //borrowing a book:
     public void borrowBook(Book book) {
-        if (noBooksIssued < 5) {
-            noBooksIssued++;
-            System.out.println(name + " kitap ödünç aldı: " + book.getTitle());
-        } else {
-            System.out.println(name + " ödünç alabileceği kitap limitine ulaştı.");
-        }
+        noBooksIssued++;
     }
 
-    //returning a book:
     public void returnBook(Book book) {
-        if (noBooksIssued > 0) {
-            noBooksIssued--;
-            System.out.println(name + " kitap iade etti: " + book.getTitle());
-        } else {
-            System.out.println(name + " iade edilecek kitap bulunmuyor.");
-        }
+        noBooksIssued--;
     }
 
     //overrided abstract method:
@@ -70,4 +58,5 @@ public class Reader extends Person{
     public void whoYouAre() {
         System.out.println("Kayıtlı kullanıcı : " + this.getName());
     }
+
 }

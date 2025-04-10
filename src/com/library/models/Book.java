@@ -2,6 +2,7 @@ package com.library.models;
 
 import java.time.LocalDate;
 import java.util.Date;
+import java.util.Objects;
 
 public abstract class Book {
     //instance variables:
@@ -104,5 +105,17 @@ public abstract class Book {
                 ", dateOfPurchase=" + dateOfPurchase +
                 ", author=" + author +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Book book = (Book) o;
+        return Double.compare(price, book.price) == 0 && status == book.status && Objects.equals(bookId, book.bookId) && Objects.equals(title, book.title) && Objects.equals(edition, book.edition) && Objects.equals(dateOfPurchase, book.dateOfPurchase) && Objects.equals(author, book.author);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bookId, title, price, status, edition, dateOfPurchase, author);
     }
 }

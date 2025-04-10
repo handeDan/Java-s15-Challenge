@@ -2,6 +2,7 @@ package com.library.models;
 
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 public class Author extends Person{
     //instance variables:
@@ -20,7 +21,7 @@ public class Author extends Person{
     }
 
     public Set<Book> showBook() {
-        return books;
+        return books.stream().collect(Collectors.toUnmodifiableSet()); //sadece read
     }
 
     //overrided abstract method:

@@ -2,6 +2,7 @@ package com.library.services;
 
 import com.library.models.Book;
 import com.library.repository.BookRepository;
+import com.library.utils.BillUtil;
 
 import java.util.Optional;
 
@@ -30,13 +31,8 @@ public class LibrarianService {
         }
     }
 
-    public double calculateBill(int daysLate) {
-        final double dailyFine = 2.5; // Günlük gecikme cezası
-        return daysLate * dailyFine;
-    }
-
     public void createBill(String memberId, int daysLate) {
-        double billAmount = calculateBill(daysLate);
+        double billAmount = BillUtil.calculateBill(daysLate);
         System.out.println("Üye " + memberId + " için " + billAmount + " TL gecikme ücreti oluşturuldu.");
     }
 

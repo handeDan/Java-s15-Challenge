@@ -6,6 +6,7 @@ import com.library.repository.ReaderRepository;
 import com.library.services.BookService;
 import com.library.services.LibrarianService;
 import com.library.services.ReaderService;
+import com.library.utils.BillUtil;
 
 public class Main {
 
@@ -61,6 +62,6 @@ public class Main {
         readerService.returnBook("12345","2");
 
         LibrarianService librarianService = new LibrarianService(bookRepository);
-        System.out.println("Faturanız: " + librarianService.calculateBill(5));
+        System.out.println("Faturanız: " + BillUtil.calculateBill(5));
     }
 }
